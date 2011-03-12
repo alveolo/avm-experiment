@@ -15,11 +15,12 @@ public class BasicTest {
 		Type[] argTypes = {Type.get("avm.int"), Type.get("avm.int"), Type.get("avm.int")};
 		Type[] retTypes = {Type.get("avm.int")};
 
-		// (a, b, c) -> a - (b*c) -> 1 - (2*3) -> -5
+		// (a, b, c) -> a - (b*c)
 		Function[] instructions = {MulIntFunction.INSTANCE, SubIntFunction.INSTANCE};
 
 		Function f = new ComposedFunction(argTypes, retTypes, instructions);
 
+		// 1 - (2*3) -> -5
 		Any[] ret = f.eval(arg);
 
 		System.out.println("results: " + ret.length + ", value: " + ((Int) ret[0]).value);
